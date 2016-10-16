@@ -7,6 +7,7 @@ package projectui;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
@@ -168,6 +169,57 @@ public class MySQLController {
             System.exit(0);
         }
         return getsecLevel();
+        
+    }
+    public void updateUser(String fName, String lName, String pWord, String Email){
+        
+        currentUser.setEmail(Email);
+        currentUser.setFullName(fName, lName);
+        getConnection();
+        
+        try{
+            PreparedStatement ps = conn.prepareStatement("UPDATE superuser SET Email = ?, FName = ?, LName = ?, Password = ? WHERE Username = ?");
+            
+            ps.setString(1, Email);
+            ps.setString(2, fName);
+            ps.setString(3, lName);
+            ps.setString(4, pWord);
+            ps.setString(5, currentUser.getUsername());
+            ps.executeUpdate();
+            ps.close();
+
+            closeConnection();
+
+            
+        } catch(Exception e){
+            System.out.println(e);
+            System.exit(0);
+        }
+        
+    }
+    public String getPassword(){
+        
+        getConnection();
+        String password = "";
+        
+        try{
+            
+            
+            String SQLAccessor = "SELECT * FROM superuser WHERE Username = " + "'" + currentUser.getUsername() + "'";
+
+            ResultSet rs = stmt.executeQuery(SQLAccessor);
+            while(rs.next()){
+                password = rs.getString("PASSWORD");
+            }
+            
+            closeConnection();
+            rs.close();
+
+        } catch(Exception e){
+            System.out.println(e);
+            System.exit(0);
+        }
+        return password;
         
     }
     

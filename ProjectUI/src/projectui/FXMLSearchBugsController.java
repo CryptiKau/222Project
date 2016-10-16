@@ -7,6 +7,9 @@ package projectui;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -38,7 +41,7 @@ import static javax.management.Query.value;
 public class FXMLSearchBugsController implements Initializable {
     
     
-    ObservableList<String> searchbyList = FXCollections.observableArrayList("Search By", "User","Status","Priority");
+    ObservableList<String> searchbyList = FXCollections.observableArrayList("Search By", "User","BugStatus","Priority");
     
     MySQLController DBCon;
     
@@ -121,9 +124,6 @@ public class FXMLSearchBugsController implements Initializable {
     @FXML
     private void searchBugReports(ActionEvent event) {
     
-        //functions on execute go here. Eg fill table with
-        //searched details
-
     }
 
     @FXML

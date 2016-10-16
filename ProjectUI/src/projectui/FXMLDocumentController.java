@@ -69,7 +69,17 @@ public class FXMLDocumentController implements Initializable {
         }
         else if(DBCon.loginDB(usernameField.getText(), passwordField.getText()) > 1){
             
-            loginFail.setText("Your Page isn't currently ready");
+            Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLAuthMenu.fxml"));
+            FXMLAuthMenuController controller = new FXMLAuthMenuController(DBCon);
+            loader.setController(controller);
+            Parent menuPage_parent = loader.load();
+            Scene menuPage_scene = new Scene(menuPage_parent);
+            
+            //takes to menu.
+            app_stage.hide();
+            app_stage.setScene(menuPage_scene);
+            app_stage.show();
         }
         else
         {

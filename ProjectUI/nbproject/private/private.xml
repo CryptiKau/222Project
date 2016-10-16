@@ -3,9 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/Nathan/Documents/NetBeansProjects/ProjectUI/src/projectui/FXMLViewEditProfileController.java</file>
             <file>file:/C:/Users/Nathan/Documents/NetBeansProjects/ProjectUI/src/projectui/MySQLController.java</file>
-            <file>file:/C:/Users/Nathan/Documents/NetBeansProjects/ProjectUI/src/projectui/FXMLMenuController.java</file>
-            <file>file:/C:/Users/Nathan/Documents/NetBeansProjects/ProjectUI/src/projectui/FXMLViewProfileController.java</file>
+            <file>file:/C:/Users/Nathan/Documents/NetBeansProjects/ProjectUI/src/projectui/FXMLViewEditProfile.fxml</file>
+            <file>file:/C:/Users/Nathan/Documents/NetBeansProjects/ProjectUI/src/projectui/FXMLAuthMenuController.java</file>
         </group>
     </open-files>
 </project-private>
