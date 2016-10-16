@@ -1,4 +1,9 @@
-# 222Project
+UPDATED 17/10
+-Database functions moved to own private class and are now called within Program functions rather than run through them
+-All functions and windows linked via passed DBClass Object
+-View Profile has been revised to inlcude Date
+-Basis for Authenticated menu loaded(For now if your Sec Level is larger than 1 you will get a message saying your page is not read)
+-Registration has not been changed yet.
 
 UPDATED 16/10
 -Database switch to MySQL
