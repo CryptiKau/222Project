@@ -37,7 +37,14 @@ import static javax.management.Query.value;
  */
 public class FXMLSearchBugsController implements Initializable {
     
+    
     ObservableList<String> searchbyList = FXCollections.observableArrayList("Search By", "User","Status","Priority");
+    
+    MySQLController DBCon;
+    
+    public FXMLSearchBugsController (MySQLController pDB){
+        DBCon = pDB;
+    }
 
     @FXML
     private AnchorPane SearchTable;
@@ -100,12 +107,16 @@ public class FXMLSearchBugsController implements Initializable {
     @FXML
     private void backtoMenu(ActionEvent event) throws IOException {
         //make sure security level is still set correctly
-        Parent menuPage_parent = FXMLLoader.load(getClass().getResource("FXMLMenu.fxml"));
-        Scene menuPage_scene = new Scene(menuPage_parent);
         Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        app_stage.hide();
-        app_stage.setScene(menuPage_scene);
-        app_stage.show();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLMenu.fxml"));
+            FXMLMenuController controller = new FXMLMenuController(DBCon);
+            loader.setController(controller);
+            Parent menuPage_parent = loader.load();
+            Scene menuPage_scene = new Scene(menuPage_parent);
+            //takes to menu.
+            app_stage.hide();
+            app_stage.setScene(menuPage_scene);
+            app_stage.show();
     }
     @FXML
     private void searchBugReports(ActionEvent event) {

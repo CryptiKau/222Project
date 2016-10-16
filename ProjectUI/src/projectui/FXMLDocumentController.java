@@ -45,20 +45,31 @@ public class FXMLDocumentController implements Initializable {
     @FXML 
     private TextField passwordField;
     
+    MySQLController DBCon = new MySQLController();
+    
     
     //login screen start on completion will take to menu
     @FXML
     private void loginAction(ActionEvent event) throws IOException {
-        Parent menuPage_parent = FXMLLoader.load(getClass().getResource("FXMLMenu.fxml"));
-        Scene menuPage_scene = new Scene(menuPage_parent);
-        Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        
-        if(isValidCredentials())
-        {
+
+        if(DBCon.loginDB(usernameField.getText(), passwordField.getText()) == 1){
+            
+            Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLMenu.fxml"));
+            FXMLMenuController controller = new FXMLMenuController(DBCon);
+            loader.setController(controller);
+            Parent menuPage_parent = loader.load();
+            Scene menuPage_scene = new Scene(menuPage_parent);
+            
             //takes to menu.
             app_stage.hide();
             app_stage.setScene(menuPage_scene);
             app_stage.show();
+            
+        }
+        else if(DBCon.loginDB(usernameField.getText(), passwordField.getText()) > 1){
+            
+            loginFail.setText("Your Page isn't currently ready");
         }
         else
         {
