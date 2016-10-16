@@ -25,6 +25,7 @@ USER ACCESS
 Complete
 --------------
 Login Screen          //This has been finished
+Passing Username      //Completed passing DB Object
 
 Semi- Complete
 --------------
@@ -33,7 +34,6 @@ View Profile          //This has been basically finished retreival of Rep and nu
 
 Not Complete
 --------------
-Passing Username into next menu
 Search Bugs
 
 ///////////////////////////////////////////////////////////////////////
