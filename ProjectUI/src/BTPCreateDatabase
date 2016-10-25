@@ -1,0 +1,336 @@
+DROP DATABASE IF EXISTS BugTrackerPrime;
+
+CREATE DATABASE BugTrackerPrime;
+
+USE BugTrackerPrime;
+
+CREATE TABLE SuperUser (
+	UserID int NOT NULL AUTO_INCREMENT,
+	SecLevel int NOT NULL,
+	UserName varchar(30) UNIQUE,
+	FName varchar(60),
+	LName varchar(60),
+	Email varchar(40),
+	Password varchar(16),
+	JoinedDate date,
+	PRIMARY KEY(UserID)
+);
+
+CREATE TABLE RegisteredUser (
+	UserID int NOT NULL DEFAULT 0,
+    ##NATHAN: USER REPUTATION NEEDS TO BE INTEGER
+	UserReputation ENUM('New', 'OK', 'Good', 'Great', 'AWESOME!', 'Bad'),
+	BugReport int,
+	AccountStatus ENUM('Active', 'Suspended', 'Deleted'),
+	FOREIGN KEY (UserID)
+		REFERENCES SuperUser(UserID)
+		ON DELETE CASCADE
+);
+
+CREATE TABLE SysAdminUser (
+	UserID int NOT NULL DEFAULT 0,
+	Role ENUM('Triage', 'Developer', 'Reviewer'),
+	# 	AssignedBug int,
+	# 	CommentID int,
+	# 	AttachmentID int,
+	FOREIGN KEY (UserID)
+		REFERENCES SuperUser(UserID)
+		ON DELETE CASCADE
+);
+
+CREATE TABLE Attachments (
+	AttachmentID int NOT NULL,
+	CreationTimestamp date,
+	ShortDescription varchar(200),
+	FileName varchar(50),
+	FileType varchar(50),
+	FileSize int,
+	AttacherID int,
+	PRIMARY KEY (AttachmentID),
+		FOREIGN KEY (AttacherID)
+	REFERENCES SysAdminUser(UserID)
+);
+
+CREATE TABLE Comments (
+	CommentID int,
+	UserID int,
+	CreationTimestamp date,
+	CommentText varchar(500),
+	AttachmentID int,
+	PRIMARY KEY (CommentID),
+		FOREIGN KEY (UserID)
+	REFERENCES SuperUser(UserID),
+		FOREIGN KEY (AttachmentID)
+	REFERENCES Attachments(AttachmentID)
+);
+
+CREATE TABLE Bug (
+	BugID int NOT NULL AUTO_INCREMENT,
+	BugName varchar(50) NOT NULL UNIQUE,
+	Product varchar(50),
+	Component varchar(50),
+	Version varchar(10),
+	OperatingSystem varchar(50),
+	PRIMARY KEY (BugID)
+);
+
+
+CREATE TABLE BugReports (
+	BugReportID int NOT NULL AUTO_INCREMENT,
+	CreationTimestamp datetime,
+	ShortDescription varchar(200),
+	DeltaTimestamp datetime,
+	BugID int,
+	BugStatus ENUM('Reported', 'Progressing', 'Solved'),
+	Resolution varchar(500),
+	Keywords varchar(50),
+	Priority ENUM('Low', 'Medium', 'High', 'Emergency'),
+	BugSeverity ENUM ('Critical', ' Major', 'Minor', 'Cosmetic'),
+	ReporterID int,
+	AssignedTo int,
+	##CommentID int,
+    ##NATHAN: THESE NOW WORK AND ARE NEEDED FOR WHEN
+    ##YOU DO MULTIPLE JOINS TO RETRIEVE USERNAMES
+	PRIMARY KEY (BugReportID),
+	FOREIGN KEY (BugID)
+		REFERENCES Bug(BugID),
+	FOREIGN KEY (ReporterID)
+		REFERENCES SuperUser(UserID),
+	FOREIGN KEY (AssignedTo)
+		REFERENCES SuperUser(UserID)
+	##FOREIGN KEY (CommentID)
+	 	##REFERENCES Comments(CommentID)
+);
+
+##### CREATE PROCEDURES/FUNCTIONS HERE ######
+USE BugTrackerPrime;
+DROP PROCEDURE IF EXISTS BugTrackerPrime.setCurrentUser;
+DELIMITER //
+CREATE DEFINER='root'@'localhost'
+PROCEDURE `setCurrentUser`(uName VARCHAR(30))
+	BEGIN
+		SELECT UserName, FName, LName, Email, JoinedDate, UserReputation, AccountStatus, SecLevel FROM
+			BugTrackerPrime.SuperUser JOIN BugTrackerPrime.RegisteredUser WHERE UserName = uname;
+	END //
+DELIMITER ;
+
+DROP PROCEDURE IF EXISTS BugTrackerPrime.setCurrentAdmin;
+DELIMITER //
+CREATE DEFINER='root'@'localhost'
+PROCEDURE `setCurrentAdmin`(uName VARCHAR(30))
+	BEGIN
+		SELECT UserName, FName, LName, Email, JoinedDate, Role, SecLevel FROM
+			BugTrackerPrime.SuperUser JOIN BugTrackerPrime.SysAdminUser WHERE UserName = uname;
+	END //
+DELIMITER ;
+
+DROP PROCEDURE IF EXISTS BugTrackerPrime.insertNewUser;
+DELIMITER //
+CREATE DEFINER='root'@'localhost'
+PROCEDURE `insertNewUser`(IN uName varchar(20), IN fName varchar(20),
+													IN lName varchar(20), IN email varchar(20),
+													IN pWord varchar(20))
+	BEGIN
+		INSERT INTO SuperUser (SecLevel, UserName, FName, LName, Email, Password, JoinedDate)
+		VALUES (0, uName, fName, lName, email, pWord, CURDATE());
+		INSERT INTO RegisteredUser (UserID, UserReputation, BugReport, AccountStatus) VALUES
+			((SELECT SuperUser.UserID FROM SuperUser WHERE SuperUser.UserName = uName), 'New', 0, 'Active');
+
+	END //
+DELIMITER ;
+
+DROP PROCEDURE IF EXISTS BugTrackerPrime.insertNewUserAdmin;
+DELIMITER //
+CREATE DEFINER='root'@'localhost'
+PROCEDURE `insertNewUserAdmin`(IN ascLvl int, IN uName varchar(20), IN fName varchar(20),
+													IN lName varchar(20), IN email varchar(20),
+													IN pWord varchar(20))
+	BEGIN
+		INSERT INTO SuperUser (SecLevel, UserName, FName, LName, Email, Password, JoinedDate)
+		VALUES (ascLvl, uName, fName, lName, email, pWord, CURDATE());
+		INSERT INTO RegisteredUser (UserID, UserReputation, BugReport, AccountStatus) VALUES
+			((SELECT SuperUser.UserID FROM SuperUser WHERE SuperUser.UserName = uName), 'New', 0, 'Active');
+
+	END //
+DELIMITER ;
+
+
+DROP FUNCTION IF EXISTS BugTrackerPrime.verifyLogIn;
+DELIMITER //
+CREATE DEFINER='root'@'localhost'
+FUNCTION `verifyLogIn`(uName VARCHAR(30), pass VARCHAR(16)) RETURNS INT DETERMINISTIC
+	BEGIN
+		DECLARE sLevel INT;
+		DECLARE pWord VARCHAR(16);
+
+		SELECT Password INTO pWord FROM BugTrackerPrime.SuperUser WHERE UserName = uName;
+
+		IF(pWord = pass)
+		THEN SELECT SecLevel INTO sLevel FROM BugTrackerPrime.SuperUser WHERE SuperUser.UserName = uName;
+		ELSEIF(pWord != pass)
+			THEN SET sLevel = 0;
+		END IF;
+
+		RETURN (sLevel);
+	END //
+DELIMITER ;
+
+USE BugTrackerPrime;
+DROP PROCEDURE IF EXISTS BugTrackerPrime.updateAdmin;
+DELIMITER //
+CREATE DEFINER='root'@'localhost'
+PROCEDURE `updateAdmin`(uName VARCHAR(30), fName VARCHAR(60), lName VARCHAR(60), email VARCHAR(40),
+												pWord VARCHAR(40))
+	BEGIN
+		UPDATE SuperUser SET FName = fName, LName = lName, Email = email, Password = pWord WHERE UserName = uname;
+	END //
+DELIMITER ;
+
+USE BugTrackerPrime;
+DROP PROCEDURE IF EXISTS BugTrackerPrime.updateAdminNoP;
+DELIMITER //
+CREATE DEFINER='root'@'localhost'
+PROCEDURE `updateAdminNoP`(uName VARCHAR(30), fName VARCHAR(60), lName VARCHAR(60), email VARCHAR(40))
+	BEGIN
+		UPDATE SuperUser SET FName = fName, LName = lName, Email = email WHERE UserName = uname;
+	END //
+DELIMITER ;
+
+
+##NATHAN: NEW UPDATED
+DROP PROCEDURE IF EXISTS BugTrackerPrime.setSearchDetailsByStatus;
+DELIMITER //
+CREATE DEFINER='root'@'localhost'
+PROCEDURE `setSearchDetailsByStatus`(bStatus ENUM('Reported', 'Progressing', 'Solved'))
+	BEGIN
+		SELECT DISTINCT BugReportID, CreationTimestamp, ShortDescription, BugStatus, Priority, bug.BugName, superuser.UserName
+        FROM  BugTrackerPrime.BugReports
+        LEFT JOIN BugTrackerPrime.bug 
+        ON BugReports.BugID = Bug.BugID
+        LEFT JOIN BugTrackerPrime.superuser 
+        ON BugReports.ReporterID = superuser.UserID
+		WHERE BugStatus = bStatus;
+	END //
+DELIMITER ;
+##NATHAN: ADDED
+DROP PROCEDURE IF EXISTS BugTrackerPrime.setSearchDetailsByPriority;
+DELIMITER //
+CREATE DEFINER='root'@'localhost'
+PROCEDURE `setSearchDetailsByPriority`(bPrio ENUM('Low', 'Medium', 'High', 'Emergency'))
+	BEGIN
+		SELECT DISTINCT BugReportID, CreationTimestamp, ShortDescription, BugStatus, Priority, bug.BugName, superuser.UserName
+        FROM  BugTrackerPrime.BugReports
+        LEFT JOIN BugTrackerPrime.bug 
+        ON BugReports.BugID = Bug.BugID
+        LEFT JOIN BugTrackerPrime.superuser 
+        ON BugReports.ReporterID = superuser.UserID
+		WHERE Priority = bPrio;
+	END //
+DELIMITER ;
+
+##NATHAN: ADDED
+DROP PROCEDURE IF EXISTS BugTrackerPrime.setSearchDetailsByUser;
+DELIMITER //
+CREATE DEFINER='root'@'localhost'
+PROCEDURE `setSearchDetailsByUser`(repName varchar(20))
+	BEGIN
+		SELECT DISTINCT BugReportID, CreationTimestamp, ShortDescription, BugStatus, Priority, bug.BugName, superuser.UserName
+        FROM  BugTrackerPrime.BugReports
+        LEFT JOIN BugTrackerPrime.bug 
+        ON BugReports.BugID = Bug.BugID
+        LEFT JOIN BugTrackerPrime.superuser 
+        ON BugReports.ReporterID = superuser.UserID
+		WHERE superuser.UserName = repName;
+	END //
+DELIMITER ;
+
+##NATHAN: UPDATED
+DROP PROCEDURE IF EXISTS BugTrackerPrime.populateExtReportDetails;
+DELIMITER //
+CREATE DEFINER='root'@'localhost'
+PROCEDURE `populateExtReportDetails`(bId INT)
+	BEGIN
+		SELECT BugName, Bug.BugID, BugStatus, Priority, CreationTimestamp, Product, OperatingSystem, Component, Version, BugSeverity, a.UserName, b.UserName
+		FROM BugTrackerPrime.Bug 
+        LEFT JOIN BugTrackerPrime.BugReports 
+        ON Bug.BugID = BugReports.BugID
+        LEFT JOIN BugTrackerPrime.superuser a
+        ON BugReports.ReporterID = a.UserID
+        LEFT JOIN BugTrackerPrime.superuser b
+        ON BugReports.AssignedTo = b.UserID
+		WHERE BugReportID = bId;
+	END //
+DELIMITER ;
+
+#### CREATE NEW USERS AND PRIVS HERE ####
+DROP USER 'newUser'@'localhost';
+CREATE USER 'newUser'@'localhost' IDENTIFIED BY 'pass123';
+GRANT INSERT, SELECT ON BugTrackerPrime.SuperUser TO 'newUser'@'localhost' IDENTIFIED BY 'pass123';
+GRANT INSERT, SELECT ON BugTrackerPrime.RegisteredUser TO 'newUser'@'localhost' IDENTIFIED BY 'pass123';
+GRANT EXECUTE ON PROCEDURE BugTrackerPrime.insertNewUser TO 'newUser'@'localhost' IDENTIFIED BY 'pass123';
+FLUSH PRIVILEGES;
+GRANT EXECUTE ON PROCEDURE BugTrackerPrime.setCurrentUser TO 'newUser'@'localhost' IDENTIFIED BY 'pass123';
+FLUSH PRIVILEGES;
+GRANT EXECUTE ON PROCEDURE BugTrackerPrime.setCurrentAdmin TO 'newUser'@'localhost' IDENTIFIED BY 'pass123';
+FLUSH PRIVILEGES;
+GRANT EXECUTE ON FUNCTION BugTrackerPrime.verifyLogIn TO 'newUser'@'localhost' IDENTIFIED BY 'pass123';
+FLUSH PRIVILEGES;
+GRANT EXECUTE ON PROCEDURE BugTrackerPrime.updateAdmin TO 'newUser'@'localhost' IDENTIFIED BY 'pass123';
+FLUSH PRIVILEGES;
+GRANT EXECUTE ON PROCEDURE BugTrackerPrime.updateAdminNoP TO 'newUser'@'localhost' IDENTIFIED BY 'pass123';
+FLUSH PRIVILEGES;
+GRANT EXECUTE ON PROCEDURE BugTrackerPrime.insertNewUserAdmin TO 'newUser'@'localhost' IDENTIFIED BY 'pass123';
+FLUSH PRIVILEGES;
+GRANT EXECUTE ON PROCEDURE BugTrackerPrime.setSearchDetailsByStatus TO 'newUser'@'localhost' IDENTIFIED BY 'pass123';
+FLUSH PRIVILEGES;
+GRANT EXECUTE ON PROCEDURE BugTrackerPrime.setSearchDetailsByUser TO 'newUser'@'localhost' IDENTIFIED BY 'pass123';
+FLUSH PRIVILEGES;
+GRANT EXECUTE ON PROCEDURE BugTrackerPrime.setSearchDetailsByPriority TO 'newUser'@'localhost' IDENTIFIED BY 'pass123';
+FLUSH PRIVILEGES;
+GRANT EXECUTE ON PROCEDURE BugTrackerPrime.populateExtReportDetails TO 'newUser'@'localhost' IDENTIFIED BY 'pass123';
+FLUSH PRIVILEGES;
+
+### INSERT TEST DATA HERE ####
+
+#INSERTS A REGISTERED USER
+INSERT INTO SuperUser(SecLevel, UserName, FName, LName, Email, Password, JoinedDate)
+VALUES (1, 'auser','Alex', 'User', 'auser@btp.com', 'pass123', CURDATE());
+
+INSERT INTO RegisteredUser VALUES ((SELECT UserID FROM SuperUser WHERE UserName = 'auser'), 'New',0,'Active');
+
+#INSERTS A SYSADMIN USER
+INSERT INTO SuperUser(SecLevel, UserName, FName, LName, Email, Password, JoinedDate)
+VALUES (2, 'rep','Jill', 'User', 'buser@btp.com', 'pass123', CURDATE());
+INSERT INTO SysAdminUser VALUES ((SELECT UserID FROM SuperUser WHERE UserName = 'rep'), 'Reviewer');
+
+INSERT INTO SuperUser(SecLevel, UserName, FName, LName, Email, Password, JoinedDate)
+VALUES (3, 'dev','Dave', 'User', 'buser@btp.com', 'pass123', CURDATE());
+INSERT INTO SysAdminUser VALUES ((SELECT UserID FROM SuperUser WHERE UserName = 'dev'), 'Developer');
+
+INSERT INTO SuperUser(SecLevel, UserName, FName, LName, Email, Password, JoinedDate)
+VALUES (4, 'tri','Jack', 'User', 'buser@btp.com', 'pass123', CURDATE());
+INSERT INTO SysAdminUser VALUES ((SELECT UserID FROM SuperUser WHERE UserName = 'tri'), 'Triage');
+
+INSERT INTO SuperUser(SecLevel, UserName, FName, LName, Email, Password, JoinedDate)
+VALUES (5, 'buser','Bob', 'User', 'buser@btp.com', 'pass123', CURDATE());
+INSERT INTO SysAdminUser VALUES ((SELECT UserID FROM SuperUser WHERE UserName = 'buser'), 'Reviewer');
+
+#INSERTS A BUG AND A BUG REPORT
+INSERT INTO Bug(BugName, Product, Component, Version, OperatingSystem)
+VALUES ('Bug 1', 'Bug Tracker Prime', 'Database', 'v0.4', 'Windows');
+
+INSERT INTO Bug(BugName, Product, Component, Version, OperatingSystem)
+VALUES ('Bug 2', 'Bug Tracker Prime', 'Database', 'v0.4', 'Windows');
+
+INSERT INTO Bug(BugName, Product, Component, Version, OperatingSystem)
+VALUES ('Bug 3', 'Bug Tracker Prime', 'Database', 'v0.4', 'Windows');
+
+
+INSERT INTO BugReports(CreationTimestamp, ShortDescription, DeltaTimestamp, BugID, BugStatus, Resolution, Keywords, Priority, BugSeverity, ReporterID, AssignedTo)
+VALUES (CURDATE(), 'this is a short description', NOW(), (SELECT BugID FROM Bug WHERE BugName = 'Bug 1'), 'Reported', 'This is a resolution', 'Some Keywords here', 'Medium', 'Minor', 2, 3);
+
+INSERT INTO BugReports(CreationTimestamp, ShortDescription, DeltaTimestamp, BugID, BugStatus, Resolution, Keywords, Priority, BugSeverity, ReporterID, AssignedTo)
+VALUES (CURDATE(), 'PROGRESSING THIS IS GREAT', NOW(), (SELECT BugID FROM Bug WHERE BugName = 'Bug 2'), 'Progressing', 'This is a resolution', 'Some Keywords here', 'Medium', 'Minor', 2, 3);
+
+INSERT INTO BugReports(CreationTimestamp, ShortDescription, DeltaTimestamp, BugID, BugStatus, Resolution, Keywords, Priority, BugSeverity, ReporterID, AssignedTo)
+VALUES (CURDATE(), 'THIS HAS BEEN SOLVED!!!', NOW(), (SELECT BugID FROM Bug WHERE BugName = 'Bug 3'), 'Solved', 'This is a resolution', 'Some Keywords here', 'Medium', 'Minor', 2, 3);

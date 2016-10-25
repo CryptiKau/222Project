@@ -21,12 +21,12 @@
       <Label fx:id="loginFail" layoutX="192.0" layoutY="150.0" textAlignment="CENTER" textFill="RED" />
       <Text fill="#5b5b5b" layoutX="11.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BUGTRACKER">
          <font>
-            <Font name="Calibri Bold" size="27.0" />
+            <Font name="System Bold" size="27.0" />
          </font>
       </Text>
-      <Text fill="#3e404a" layoutX="163.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PRIME">
+      <Text fill="#3e404a" layoutX="185.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PRIME">
          <font>
-            <Font name="Calibri Italic" size="22.0" />
+            <Font name="System Italic" size="22.0" />
          </font>
       </Text>
       <Button fx:id="registerButton" layoutX="150.0" layoutY="202.0" mnemonicParsing="false" onAction="#registerAction" prefHeight="25.0" prefWidth="164.0" style="-fx-background-color: D7D7D7;" text="Register" />

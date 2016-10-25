@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="783.0" prefWidth="814.0" style="-fx-background-color: #282828;" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane prefHeight="76.0" prefWidth="814.0">
+         <children>
+            <Rectangle arcWidth="5.0" fill="#ebebeb" height="76.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="814.0" />
+            <Text fill="#5b5b5b" layoutX="14.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BUGTRACKER">
+               <font>
+                  <Font name="System Bold" size="27.0" />
+               </font>
+            </Text>
+            <Text fill="#3e404a" layoutX="187.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PRIME">
+               <font>
+                  <Font name="System Italic" size="22.0" />
+               </font>
+            </Text>
+            <Text fill="#5b5b5b" layoutX="489.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search, Edit and Create Bug Reports">
+               <font>
+                  <Font name="System Bold Italic" size="18.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutY="76.0" prefHeight="747.0" prefWidth="814.0">
+         <children>
+            <TabPane layoutY="7.0" prefHeight="661.0" prefWidth="814.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="46.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <tabs>
+                <Tab text="Search Bugs">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="627.0" prefWidth="814.0">
+                           <children>
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ebebeb" height="617.0" layoutX="-2.0" layoutY="58.0" stroke="BLACK" strokeType="INSIDE" width="820.0" />
+                              <TextField fx:id="searchBox" layoutX="14.0" layoutY="19.0" />
+                              <Button fx:id="searchButton" layoutX="280.0" layoutY="19.0" mnemonicParsing="false" onAction="#searchBugs" prefHeight="25.0" prefWidth="90.0" text="Search" />
+                              <TableView fx:id="tablebugSearch" layoutY="59.0" onMouseClicked="#bugSelected" prefHeight="178.0" prefWidth="814.0">
+                                <columns>
+                                  <TableColumn fx:id="tablebugName" prefWidth="125.0" text="Name" />
+                                    <TableColumn fx:id="tableshortDesc" prefWidth="290.0" text="Short Description" />
+                                    <TableColumn fx:id="tablebStatus" prefWidth="91.0" text="Status" />
+                                    <TableColumn fx:id="tablePriority" prefWidth="114.0" text="Priority" />
+                                    <TableColumn fx:id="tableDate" prefWidth="104.0" text="Date" />
+                                    <TableColumn fx:id="tablebugReporter" prefWidth="89.0" text="Reporter" />
+                                </columns>
+                              </TableView>
+                              <TextArea fx:id="selectedbugDesc" editable="false" layoutX="11.0" layoutY="361.0" prefHeight="127.0" prefWidth="381.0" />
+                              <TextArea fx:id="selectedbugReso" editable="false" layoutX="422.0" layoutY="361.0" prefHeight="127.0" prefWidth="381.0" />
+                              <Text layoutX="13.0" layoutY="270.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name:">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Text>
+                              <Text fx:id="selectedBugName" layoutX="64.0" layoutY="270.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+                              <Text layoutX="13.0" layoutY="297.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BugID:">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Text>
+                              <Text fx:id="selectedBugID" layoutX="64.0" layoutY="297.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+                              <Text layoutX="163.0" layoutY="270.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Status:">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Text>
+                              <Text fx:id="selectedStatus" layoutX="224.0" layoutY="270.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+                              <Text layoutX="163.0" layoutY="297.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Priority:">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Text>
+                              <Text fx:id="selectedPriority" layoutX="224.0" layoutY="297.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+                              <Text layoutX="13.0" layoutY="357.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description:">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Text>
+                              <Text layoutX="423.0" layoutY="358.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Resolution:">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Text>
+                              <Text layoutX="313.0" layoutY="270.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date:">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Text>
+                              <Text fx:id="selectedDate" layoutX="374.0" layoutY="270.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+                              <Text layoutX="473.0" layoutY="326.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reporter:">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Text>
+                              <Text fx:id="selectedReporter" layoutX="554.0" layoutY="326.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+                              <TableView fx:id="selectedCmnt" editable="true" layoutY="491.0" prefHeight="148.0" prefWidth="814.0">
+                                <columns>
+                                  <TableColumn fx:id="selectedUsercmnt" prefWidth="101.0" text="User" />
+                                  <TableColumn prefWidth="608.0" text="Comment" />
+                                    <TableColumn fx:id="selectedDatecmnt" prefWidth="104.0" text="Date" />
+                                </columns>
+                              </TableView>
+                              <Text layoutX="13.0" layoutY="325.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Product:">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Text>
+                              <Text fx:id="selectedProduct" layoutX="64.0" layoutY="326.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+                              <Text layoutX="313.0" layoutY="297.0" strokeType="OUTSIDE" strokeWidth="0.0" text="OS:">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Text>
+                              <Text fx:id="selectedOS" layoutX="374.0" layoutY="297.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+                              <Text layoutX="473.0" layoutY="270.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Component:">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Text>
+                              <Text fx:id="selectedCmpnt" layoutX="554.0" layoutY="270.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+                              <Text layoutX="163.0" layoutY="325.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Version:">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Text>
+                              <Text fx:id="selectedSev" layoutX="374.0" layoutY="326.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+                              <Text layoutX="313.0" layoutY="326.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Severity:">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Text>
+                              <Text fx:id="selectedVer" layoutX="224.0" layoutY="325.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+                              <Text layoutX="473.0" layoutY="297.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Assigned To:">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Text>
+                              <Text fx:id="selectedAssign" layoutX="554.0" layoutY="297.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+                              <Button fx:id="editButton" layoutX="664.0" layoutY="253.0" mnemonicParsing="false" onAction="#editBugDetails" prefHeight="25.0" prefWidth="115.0" text="Edit" />
+                              <Button fx:id="saveButton" layoutX="664.0" layoutY="281.0" mnemonicParsing="false" onAction="#saveBugDetails" prefHeight="25.0" prefWidth="115.0" text="Save" />
+                              <TextField fx:id="productBox" editable="false" layoutX="64.0" layoutY="309.0" prefHeight="25.0" prefWidth="90.0" visible="false" />
+                              <TextField fx:id="bugNamebox" editable="false" layoutX="64.0" layoutY="254.0" prefHeight="25.0" prefWidth="90.0" visible="false" />
+                              <TextField fx:id="versionBox" editable="false" layoutX="210.0" layoutY="309.0" prefHeight="25.0" prefWidth="102.0" visible="false" />
+                              <TextField fx:id="osBox" editable="false" layoutX="364.0" layoutY="281.0" prefHeight="25.0" prefWidth="102.0" visible="false" />
+                              <TextField fx:id="assignedBox" editable="false" layoutX="552.0" layoutY="281.0" prefHeight="25.0" prefWidth="90.0" visible="false" />
+                              <TextField fx:id="cmpntBox" editable="false" layoutX="552.0" layoutY="254.0" prefHeight="25.0" prefWidth="90.0" visible="false" />
+                              <Text layoutX="663.0" layoutY="326.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rep:">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Text>
+                              <Text fx:id="repLevel" layoutX="693.0" layoutY="326.0" strokeType="OUTSIDE" strokeWidth="0.0" text="65" />
+                              <Button fx:id="increaseRepButton" layoutX="721.0" layoutY="310.0" mnemonicParsing="false" onAction="#increaseRep" text="+">
+                                 <font>
+                                    <Font name="System Bold" size="11.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="decreaseRepButton" layoutX="754.0" layoutY="310.0" mnemonicParsing="false" onAction="#decreaseRep" prefHeight="24.0" prefWidth="25.0" text="-">
+                                 <font>
+                                    <Font name="System Bold" size="11.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="submitCommentButton" layoutX="683.0" layoutY="643.0" mnemonicParsing="false" onAction="#submitComment" prefHeight="25.0" prefWidth="122.0" text="Submit Comment" />
+                              <Button fx:id="addCommentButton" layoutX="541.0" layoutY="643.0" mnemonicParsing="false" onAction="#addComment" prefHeight="25.0" prefWidth="122.0" text="Add Comment" />
+                              <Button fx:id="uploadPatchButton" layoutX="10.0" layoutY="643.0" mnemonicParsing="false" onAction="#uploadPatch" prefHeight="25.0" prefWidth="109.0" text="Edit Patch" />
+                              <ComboBox fx:id="searchBy" layoutX="168.0" layoutY="19.0" prefHeight="25.0" prefWidth="108.0" />
+                              <ComboBox fx:id="statusBox" layoutX="210.0" layoutY="254.0" prefHeight="25.0" prefWidth="102.0" />
+                              <ComboBox fx:id="priorityBox" layoutX="210.0" layoutY="281.0" prefHeight="25.0" prefWidth="102.0" />
+                              <ComboBox fx:id="severityBox" layoutX="364.0" layoutY="310.0" prefHeight="25.0" prefWidth="102.0" />
+                              <Text fx:id="searchError" fill="RED" layoutX="381.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+                <Tab fx:id="createBugTab" text="Create Bug Report">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="605.0" prefWidth="814.0" style="-fx-background-color: ebebeb;">
+                           <children>
+                              <Text layoutX="14.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bug name:">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Text>
+                              <Text layoutX="14.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Product:">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Text>
+                              <Text layoutX="14.0" layoutY="142.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Version:">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Text>
+                              <Text layoutX="204.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Component:">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Text>
+                              <Text layoutX="204.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0" text="OS:">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Text>
+                              <Text layoutX="204.0" layoutY="142.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Assigned To:">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Text>
+                              <Text layoutX="404.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Severity:">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Text>
+                              <Text layoutX="404.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Priority:">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Text>
+                              <Text layoutX="404.0" layoutY="142.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Status:">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Text>
+                              <TextArea fx:id="newDesc" editable="false" layoutX="13.0" layoutY="177.0" prefHeight="139.0" prefWidth="319.0" />
+                              <Text layoutX="14.0" layoutY="172.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description:">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Text>
+                              <Text layoutX="349.0" layoutY="171.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Keywords:">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Text>
+                              <TextArea fx:id="newKeywords" editable="false" layoutX="349.0" layoutY="177.0" prefHeight="139.0" prefWidth="319.0" />
+                              <TextField fx:id="newBugName" layoutX="82.0" layoutY="65.0" prefHeight="25.0" prefWidth="111.0" />
+                              <TextField fx:id="newProductname" layoutX="82.0" layoutY="95.0" prefHeight="25.0" prefWidth="111.0" />
+                              <TextField fx:id="newVersionName" layoutX="82.0" layoutY="125.0" prefHeight="25.0" prefWidth="111.0" />
+                              <TextField fx:id="newComponentname" layoutX="282.0" layoutY="65.0" prefHeight="25.0" prefWidth="111.0" />
+                              <TextField fx:id="newOSName" layoutX="282.0" layoutY="95.0" prefHeight="25.0" prefWidth="111.0" />
+                              <TextField fx:id="NewAssignedName" layoutX="282.0" layoutY="125.0" prefHeight="25.0" prefWidth="111.0" />
+                              <Button fx:id="newSubmit" layoutX="556.0" layoutY="330.0" mnemonicParsing="false" onAction="#submitnewBug" prefHeight="25.0" prefWidth="112.0" text="Submit" />
+                              <ComboBox fx:id="newSeverity" layoutX="461.0" layoutY="66.0" prefHeight="25.0" prefWidth="122.0" />
+                              <ComboBox fx:id="newPriority" layoutX="461.0" layoutY="95.0" prefHeight="25.0" prefWidth="122.0" />
+                              <ComboBox fx:id="newStatus" layoutX="461.0" layoutY="124.0" prefHeight="25.0" prefWidth="122.0" />
+                              <Rectangle arcWidth="5.0" fill="#282828" height="59.0" stroke="BLACK" strokeType="INSIDE" width="814.0" />
+                              <Text fill="#ebebeb" layoutX="18.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create a new Bug Report">
+                                 <font>
+                                    <Font name="System Bold Italic" size="17.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+              </tabs>
+            </TabPane>
+            <Button fx:id="backButton" layoutX="683.0" layoutY="713.0" mnemonicParsing="false" onAction="#backtoMenu" prefHeight="25.0" prefWidth="122.0" text="Back" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

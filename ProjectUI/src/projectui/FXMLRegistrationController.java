@@ -5,15 +5,6 @@
  */
 package projectui;
 
-import java.io.IOException;
-import java.net.URL;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.Statement;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -25,6 +16,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 /**
  * FXML Controller class
@@ -71,51 +66,10 @@ public class FXMLRegistrationController implements Initializable {
     //function for registering new acc.
     private void registerAcc(ActionEvent event) throws IOException
     {
-        /*Completed on Function
-        -On Register button execute 
-        -Take data and insert into table
-        */
-        
-        /*To be done
-        -Textfields need to be validated before entering.
-        */
-        
-        //Gets current date to insert into date joined.
-        String date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
-        
-        
         try{
-            
-            String driver = "com.mysql.jdbc.Driver";
-            
-            /////For testing please input own DB details////////////
-            String dbURL = "jdbc:mysql://localhost:3306/projectdb";
-            String dbUsername = "root";
-            String dbPassword = "happy123";
-            ///////////////////////////////////////////////////////
-            Class.forName(driver);
-            Connection conn = DriverManager.getConnection(dbURL, dbUsername, dbPassword);
-            
-            Statement stmt = conn.createStatement();
-            
-            String fname = newFname.getText();
-            String lname = newLname.getText();
-            String uname = newUsername.getText();
-            String email = newEmail.getText();
-            String password = newPassword.getText();
-           
-            
-            PreparedStatement newUser; 
-            newUser = conn.prepareStatement("INSERT INTO superuser (SecLevel, UserName, FName, LName, Email, Password, JoinedDate) VALUES (1,'"
-                    + uname +"', '"+ fname +"', '" + lname
-                    +"', '"+ email +"', '" + password +"', '"+ date + "')");
-            
-            newUser.executeUpdate();
-            
-            stmt.close();
-            conn.close();
-            
-            System.out.println("Added");
+            //TO DO: CHECK THE USER INPUT
+            NewUser newU = new NewUser();
+            newU.setNewUser(newUsername.getText(), newFname.getText(),newLname.getText(),newEmail.getText(), newPassword.getText());
             
             Parent loginPage_parent = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
             Scene loginPage_scene = new Scene(loginPage_parent);
@@ -128,9 +82,6 @@ public class FXMLRegistrationController implements Initializable {
             System.out.println(e);
             System.exit(0);
         }
-        
-        
-        
     }
     @Override
     public void initialize(URL url, ResourceBundle rb) {

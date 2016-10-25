@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="446.0" prefWidth="602.0" style="-fx-background-color: #282828;" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Rectangle arcWidth="5.0" fill="#ebebeb" height="74.0" layoutY="-6.0" stroke="#6b6b6b" strokeType="OUTSIDE" strokeWidth="0.0" width="602.0" />
+      <Text fill="#5b5b5b" layoutX="21.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BUGTRACKER">
+         <font>
+            <Font name="System Bold" size="27.0" />
+         </font>
+      </Text>
+      <Text fill="#3e404a" layoutX="194.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PRIME">
+         <font>
+            <Font name="System Italic" size="22.0" />
+         </font>
+      </Text>
+      <TextField fx:id="newUsername" layoutX="109.0" layoutY="96.0" prefHeight="25.0" prefWidth="205.0" />
+      <Text fill="#5b5b5b" layoutX="454.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Registration">
+         <font>
+            <Font name="System Bold Italic" size="18.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="28.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="28.0" layoutY="153.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Text>
+      <TextField fx:id="newEmail" layoutX="109.0" layoutY="176.0" prefHeight="25.0" prefWidth="205.0" />
+      <Text fill="WHITE" layoutX="28.0" layoutY="193.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Text>
+      <TextField fx:id="newFname" layoutX="109.0" layoutY="217.0" prefHeight="25.0" prefWidth="205.0" />
+      <Text fill="WHITE" layoutX="28.0" layoutY="234.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First Name">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Text>
+      <TextField fx:id="newLname" layoutX="109.0" layoutY="257.0" prefHeight="25.0" prefWidth="205.0" />
+      <Text fill="WHITE" layoutX="28.0" layoutY="274.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last Name">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Text>
+      <Label fx:id="errUserTaken" layoutX="313.0" layoutY="117.0" textFill="RED">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="errEmailTaken" layoutX="313.0" layoutY="197.0" textFill="RED">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Button fx:id="newRegister" layoutX="109.0" layoutY="365.0" mnemonicParsing="false" onAction="#registerAcc" prefHeight="25.0" prefWidth="205.0" style="-fx-background-color: D7D7D7;" text="Register" />
+      <Button fx:id="backtoLog" layoutX="109.0" layoutY="402.0" mnemonicParsing="false" onAction="#backAction" prefHeight="25.0" prefWidth="205.0" style="-fx-background-color: D7D7D7;" text="Back" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ebebeb" height="381.0" layoutX="397.0" layoutY="66.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="205.0" />
+      <Text layoutX="401.0" layoutY="107.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please fill out the required details&#10;&#10;Once your registration has been&#10;completed you will be able to access&#10;BugTracker Prime.&#10;&#10;BugTracker Prime is a premium&#10;issue and bug tracking program&#10;once an account is created you &#10;will have access to tools granted&#10;by your system admin.&#10;&#10;&#10;If you have already registered please &#10;press the back button and attempt &#10;to login with your details." textAlignment="CENTER" />
+      <PasswordField fx:id="newPassword" layoutX="109.0" layoutY="136.0" prefHeight="25.0" prefWidth="205.0" />
+      <TextField fx:id="setAccesslevel" layoutX="109.0" layoutY="297.0" prefHeight="25.0" prefWidth="205.0" />
+      <Text fill="WHITE" layoutX="28.0" layoutY="314.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Access Level">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Text>
+      <Text fx:id="inputError" fill="RED" layoutX="190.0" layoutY="348.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ERROR">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Text>
+      <Text fx:id="createdText" fill="WHITE" layoutX="150.0" layoutY="348.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ACCOUNT CREATED">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>

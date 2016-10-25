@@ -5,10 +5,6 @@
  */
 package projectui;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -20,9 +16,13 @@ import javafx.stage.Stage;
  * @author Nathan
  */
 public class ProjectUI extends Application {
-    
+
     @Override
     public void start(Stage stage) throws Exception {
+
+        System.out.println("START");
+        //program starts here and should check if database exists, if not run setup scripts
+
         Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
         
         Scene scene = new Scene(root);

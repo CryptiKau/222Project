@@ -1,0 +1,556 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="504.0" prefWidth="692.0" style="-fx-background-color: #282828;" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Rectangle arcWidth="5.0" fill="#ebebeb" height="74.0" stroke="#6b6b6b" strokeType="OUTSIDE" strokeWidth="0.0" width="692.0" />
+      <Text fill="#5b5b5b" layoutX="21.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BUGTRACKER">
+         <font>
+            <Font name="System Bold" size="27.0" />
+         </font>
+      </Text>
+      <Text fill="#3e404a" layoutX="194.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PRIME">
+         <font>
+            <Font name="System Italic" size="22.0" />
+         </font>
+      </Text>
+      <Text fill="#5b5b5b" layoutX="474.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Generate Reports">
+         <font>
+            <Font name="System Bold Italic" size="18.0" />
+         </font>
+      </Text>
+      <TabPane layoutY="74.0" prefHeight="388.0" prefWidth="692.0" style="-fx-background-color: 0;" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab fx:id="weeklyTab" onSelectionChanged="#generateWeekly" text="Weekly">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="370.0" prefWidth="692.0" style="-fx-background-color: #ebebeb;">
+                     <children>
+                        <Rectangle arcWidth="5.0" fill="#282828" height="52.0" stroke="BLACK" strokeType="INSIDE" width="692.0" />
+                        <Text fill="WHITE" layoutX="20.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Weekly Report For">
+                           <font>
+                              <Font name="System Bold Italic" size="15.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="reportDate" fill="WHITE" layoutX="153.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATE">
+                           <font>
+                              <Font name="System Bold Italic" size="15.0" />
+                           </font>
+                        </Text>
+                        <Text fill="#282828" layoutX="20.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="New Bug Reports">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Text>
+                        <Separator layoutY="81.0" prefHeight="0.0" prefWidth="692.0" />
+                        <Text fill="#282828" layoutX="20.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="New Bug Reports:">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="newReportCountText" layoutX="130.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+                        <Text fill="#282828" layoutX="170.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reports Assigned:">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="newReportAssText" layoutX="280.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+                        <Text fill="#282828" layoutX="320.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reports Unssigned:">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="newReportunAssText" layoutX="437.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+                        <Text fill="#282828" layoutX="20.0" layoutY="144.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bug Status Reports">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Text>
+                        <Separator layoutY="151.0" prefHeight="0.0" prefWidth="692.0" />
+                        <Text fill="#282828" layoutX="20.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reported Bugs:">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="reportedBugsText" layoutX="130.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+                        <Text fill="#282828" layoutX="170.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Progressing Bugs:">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="progresBugsText" layoutX="280.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+                        <Text fill="#282828" layoutX="320.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Solved Bugs:">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="solvedBugsTest" layoutX="437.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+                        <Separator layoutY="121.0" prefHeight="0.0" prefWidth="692.0" />
+                        <Text fill="#282828" layoutX="20.0" layoutY="214.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bug Priority Reports">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Text>
+                        <Separator layoutY="221.0" prefHeight="0.0" prefWidth="692.0" />
+                        <Text fill="#282828" layoutX="20.0" layoutY="248.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Low Priority:">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="lowPrioText" layoutX="130.0" layoutY="248.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+                        <Text fill="#282828" layoutX="170.0" layoutY="248.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Medium Priority:">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="mediumPrioText" layoutX="280.0" layoutY="248.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+                        <Text fill="#282828" layoutX="320.0" layoutY="247.0" strokeType="OUTSIDE" strokeWidth="0.0" text="High Priority:">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="highPrioText" layoutX="437.0" layoutY="248.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+                        <Separator layoutY="191.0" prefHeight="0.0" prefWidth="692.0" />
+                        <Text fill="#282828" layoutX="478.0" layoutY="248.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Emergency Priority:">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="emergPrioText" layoutX="595.0" layoutY="249.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+                        <Text fill="#282828" layoutX="20.0" layoutY="284.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bug Severity Reports">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Text>
+                        <Separator layoutY="291.0" prefHeight="0.0" prefWidth="692.0" />
+                        <Text fill="#282828" layoutX="20.0" layoutY="318.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cosmetic Severity:">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="cosSevText" layoutX="130.0" layoutY="318.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+                        <Text fill="#282828" layoutX="170.0" layoutY="318.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Minor Severity:">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="minorSevText" layoutX="280.0" layoutY="318.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+                        <Text fill="#282828" layoutX="320.0" layoutY="317.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Major Severity:">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="majorSevText" layoutX="437.0" layoutY="318.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+                        <Separator layoutY="261.0" prefHeight="0.0" prefWidth="692.0" />
+                        <Text fill="#282828" layoutX="478.0" layoutY="318.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Critical Severity:">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="critSevText" layoutX="595.0" layoutY="319.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+            <Tab fx:id="monthlyTab" onSelectionChanged="#generateMonthly" text="Monthly">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="370.0" prefWidth="692.0" style="-fx-background-color: #ebebeb;">
+                     <children>
+                        <Rectangle arcWidth="5.0" fill="#282828" height="52.0" stroke="BLACK" strokeType="INSIDE" width="692.0" />
+                        <Text fill="WHITE" layoutX="20.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Monthly Report For">
+                           <font>
+                              <Font name="System Bold Italic" size="15.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="reportDate1" fill="WHITE" layoutX="159.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATE">
+                           <font>
+                              <Font name="System Bold Italic" size="15.0" />
+                           </font>
+                        </Text>
+                        <Text fill="#282828" layoutX="20.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="New Bug Reports">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Text>
+                        <Separator layoutY="81.0" prefHeight="0.0" prefWidth="692.0" />
+                        <Text fill="#282828" layoutX="20.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="New Bug Reports:">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="mnewReportCountText" layoutX="130.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+                        <Text fill="#282828" layoutX="170.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reports Assigned:">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="mnewReportAssText" layoutX="280.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+                        <Text fill="#282828" layoutX="320.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reports Unssigned:">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="mnewReportunAssText" layoutX="437.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+                        <Text fill="#282828" layoutX="20.0" layoutY="144.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bug Status Reports">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Text>
+                        <Separator layoutY="151.0" prefHeight="0.0" prefWidth="692.0" />
+                        <Text fill="#282828" layoutX="20.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reported Bugs:">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="mreportedBugsText" layoutX="130.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+                        <Text fill="#282828" layoutX="170.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Progressing Bugs:">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="mprogresBugsText" layoutX="280.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+                        <Text fill="#282828" layoutX="320.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Solved Bugs:">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="msolvedBugsTest" layoutX="437.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+                        <Separator layoutY="121.0" prefHeight="0.0" prefWidth="692.0" />
+                        <Text fill="#282828" layoutX="20.0" layoutY="214.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bug Priority Reports">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Text>
+                        <Separator layoutY="221.0" prefHeight="0.0" prefWidth="692.0" />
+                        <Text fill="#282828" layoutX="20.0" layoutY="248.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Low Priority:">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="mlowPrioText" layoutX="130.0" layoutY="248.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+                        <Text fill="#282828" layoutX="170.0" layoutY="248.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Medium Priority:">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="mmediumPrioText" layoutX="280.0" layoutY="248.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+                        <Text fill="#282828" layoutX="320.0" layoutY="247.0" strokeType="OUTSIDE" strokeWidth="0.0" text="High Priority:">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="mhighPrioText" layoutX="437.0" layoutY="248.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+                        <Separator layoutY="191.0" prefHeight="0.0" prefWidth="692.0" />
+                        <Text fill="#282828" layoutX="478.0" layoutY="248.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Emergency Priority:">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="memergPrioText" layoutX="595.0" layoutY="249.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+                        <Text fill="#282828" layoutX="20.0" layoutY="284.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bug Severity Reports">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Text>
+                        <Separator layoutY="291.0" prefHeight="0.0" prefWidth="692.0" />
+                        <Text fill="#282828" layoutX="20.0" layoutY="318.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cosmetic Severity:">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="mcosSevText" layoutX="130.0" layoutY="318.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+                        <Text fill="#282828" layoutX="170.0" layoutY="318.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Minor Severity:">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="mminorSevText" layoutX="280.0" layoutY="318.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+                        <Text fill="#282828" layoutX="320.0" layoutY="317.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Major Severity:">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="mmajorSevText" layoutX="437.0" layoutY="318.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+                        <Separator layoutY="261.0" prefHeight="0.0" prefWidth="692.0" />
+                        <Text fill="#282828" layoutX="478.0" layoutY="318.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Critical Severity:">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="mcritSevText" layoutX="595.0" layoutY="319.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab fx:id="halfyearlyTab" onSelectionChanged="#generateHalfYearly" text="Half-Yearly">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="370.0" prefWidth="692.0" style="-fx-background-color: #ebebeb;">
+                     <children>
+                        <Rectangle arcWidth="5.0" fill="#282828" height="52.0" stroke="BLACK" strokeType="INSIDE" width="692.0" />
+                        <Text fill="WHITE" layoutX="20.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Half-Yearly Report For">
+                           <font>
+                              <Font name="System Bold Italic" size="15.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="reportDate11" fill="WHITE" layoutX="182.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATE">
+                           <font>
+                              <Font name="System Bold Italic" size="15.0" />
+                           </font>
+                        </Text>
+                        <Text fill="#282828" layoutX="20.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="New Bug Reports">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Text>
+                        <Separator layoutY="81.0" prefHeight="0.0" prefWidth="692.0" />
+                        <Text fill="#282828" layoutX="20.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="New Bug Reports:">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="hnewReportCountText" layoutX="130.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+                        <Text fill="#282828" layoutX="170.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reports Assigned:">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="hnewReportAssText" layoutX="280.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+                        <Text fill="#282828" layoutX="320.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reports Unssigned:">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="hnewReportunAssText" layoutX="437.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+                        <Text fill="#282828" layoutX="20.0" layoutY="144.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bug Status Reports">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Text>
+                        <Separator layoutY="151.0" prefHeight="0.0" prefWidth="692.0" />
+                        <Text fill="#282828" layoutX="20.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reported Bugs:">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="hreportedBugsText" layoutX="130.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+                        <Text fill="#282828" layoutX="170.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Progressing Bugs:">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="hprogresBugsText" layoutX="280.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+                        <Text fill="#282828" layoutX="320.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Solved Bugs:">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="hsolvedBugsTest" layoutX="437.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+                        <Separator layoutY="121.0" prefHeight="0.0" prefWidth="692.0" />
+                        <Text fill="#282828" layoutX="20.0" layoutY="214.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bug Priority Reports">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Text>
+                        <Separator layoutY="221.0" prefHeight="0.0" prefWidth="692.0" />
+                        <Text fill="#282828" layoutX="20.0" layoutY="248.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Low Priority:">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="hlowPrioText" layoutX="130.0" layoutY="248.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+                        <Text fill="#282828" layoutX="170.0" layoutY="248.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Medium Priority:">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="hmediumPrioText" layoutX="280.0" layoutY="248.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+                        <Text fill="#282828" layoutX="320.0" layoutY="247.0" strokeType="OUTSIDE" strokeWidth="0.0" text="High Priority:">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="hhighPrioText" layoutX="437.0" layoutY="248.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+                        <Separator layoutY="191.0" prefHeight="0.0" prefWidth="692.0" />
+                        <Text fill="#282828" layoutX="478.0" layoutY="248.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Emergency Priority:">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="hemergPrioText" layoutX="595.0" layoutY="249.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+                        <Text fill="#282828" layoutX="20.0" layoutY="284.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bug Severity Reports">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Text>
+                        <Separator layoutY="291.0" prefHeight="0.0" prefWidth="692.0" />
+                        <Text fill="#282828" layoutX="20.0" layoutY="318.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cosmetic Severity:">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="hcosSevText" layoutX="130.0" layoutY="318.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+                        <Text fill="#282828" layoutX="170.0" layoutY="318.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Minor Severity:">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="hminorSevText" layoutX="280.0" layoutY="318.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+                        <Text fill="#282828" layoutX="320.0" layoutY="317.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Major Severity:">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="hmajorSevText" layoutX="437.0" layoutY="318.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+                        <Separator layoutY="261.0" prefHeight="0.0" prefWidth="692.0" />
+                        <Text fill="#282828" layoutX="478.0" layoutY="318.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Critical Severity:">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="hcritSevText" layoutX="595.0" layoutY="319.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab fx:id="yearlyTab" onSelectionChanged="#generateYearly" text="Yearly">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="370.0" prefWidth="692.0" style="-fx-background-color: #ebebeb;">
+                     <children>
+                        <Rectangle arcWidth="5.0" fill="#282828" height="52.0" stroke="BLACK" strokeType="INSIDE" width="692.0" />
+                        <Text fill="WHITE" layoutX="20.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Yearly Report For">
+                           <font>
+                              <Font name="System Bold Italic" size="15.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="reportDate111" fill="WHITE" layoutX="146.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATE">
+                           <font>
+                              <Font name="System Bold Italic" size="15.0" />
+                           </font>
+                        </Text>
+                        <Text fill="#282828" layoutX="20.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="New Bug Reports">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Text>
+                        <Separator layoutY="81.0" prefHeight="0.0" prefWidth="692.0" />
+                        <Text fill="#282828" layoutX="20.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="New Bug Reports:">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="ynewReportCountText" layoutX="130.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+                        <Text fill="#282828" layoutX="170.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reports Assigned:">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="ynewReportAssText" layoutX="280.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+                        <Text fill="#282828" layoutX="320.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reports Unssigned:">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="ynewReportunAssText" layoutX="437.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+                        <Text fill="#282828" layoutX="20.0" layoutY="144.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bug Status Reports">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Text>
+                        <Separator layoutY="151.0" prefHeight="0.0" prefWidth="692.0" />
+                        <Text fill="#282828" layoutX="20.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reported Bugs:">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="yreportedBugsText" layoutX="130.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+                        <Text fill="#282828" layoutX="170.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Progressing Bugs:">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="yprogresBugsText" layoutX="280.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+                        <Text fill="#282828" layoutX="320.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Solved Bugs:">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="ysolvedBugsTest" layoutX="437.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+                        <Separator layoutY="121.0" prefHeight="0.0" prefWidth="692.0" />
+                        <Text fill="#282828" layoutX="20.0" layoutY="214.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bug Priority Reports">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Text>
+                        <Separator layoutY="221.0" prefHeight="0.0" prefWidth="692.0" />
+                        <Text fill="#282828" layoutX="20.0" layoutY="248.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Low Priority:">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="ylowPrioText" layoutX="130.0" layoutY="248.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+                        <Text fill="#282828" layoutX="170.0" layoutY="248.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Medium Priority:">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="ymediumPrioText" layoutX="280.0" layoutY="248.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+                        <Text fill="#282828" layoutX="320.0" layoutY="247.0" strokeType="OUTSIDE" strokeWidth="0.0" text="High Priority:">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="yhighPrioText" layoutX="437.0" layoutY="248.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+                        <Separator layoutY="191.0" prefHeight="0.0" prefWidth="692.0" />
+                        <Text fill="#282828" layoutX="478.0" layoutY="248.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Emergency Priority:">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="yemergPrioText" layoutX="595.0" layoutY="249.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+                        <Text fill="#282828" layoutX="20.0" layoutY="284.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bug Severity Reports">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Text>
+                        <Separator layoutY="291.0" prefHeight="0.0" prefWidth="692.0" />
+                        <Text fill="#282828" layoutX="20.0" layoutY="318.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cosmetic Severity:">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="ycosSevText" layoutX="130.0" layoutY="318.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+                        <Text fill="#282828" layoutX="170.0" layoutY="318.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Minor Severity:">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="yminorSevText" layoutX="280.0" layoutY="318.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+                        <Text fill="#282828" layoutX="320.0" layoutY="317.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Major Severity:">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="ymajorSevText" layoutX="437.0" layoutY="318.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+                        <Separator layoutY="261.0" prefHeight="0.0" prefWidth="692.0" />
+                        <Text fill="#282828" layoutX="478.0" layoutY="318.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Critical Severity:">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="ycritSevText" layoutX="595.0" layoutY="319.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+      <Button fx:id="backToMenu" layoutX="586.0" layoutY="470.0" mnemonicParsing="false" onAction="#backtoMenu" prefHeight="25.0" prefWidth="92.0" text="Back" />
+   </children>
+</AnchorPane>

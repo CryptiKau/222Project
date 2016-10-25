@@ -14,18 +14,18 @@
       <Rectangle arcWidth="5.0" fill="#ebebeb" height="74.0" layoutY="-6.0" stroke="#6b6b6b" strokeType="OUTSIDE" strokeWidth="0.0" width="602.0" />
       <Text fill="#5b5b5b" layoutX="21.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BUGTRACKER">
          <font>
-            <Font name="Calibri Bold" size="27.0" />
+            <Font name="System Bold" size="27.0" />
          </font>
       </Text>
-      <Text fill="#3e404a" layoutX="173.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PRIME">
+      <Text fill="#3e404a" layoutX="195.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PRIME">
          <font>
-            <Font name="Calibri Italic" size="22.0" />
+            <Font name="System Italic" size="22.0" />
          </font>
       </Text>
       <TextField fx:id="newUsername" layoutX="99.0" layoutY="96.0" prefHeight="25.0" prefWidth="205.0" />
       <Text fill="#5b5b5b" layoutX="454.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Registration">
          <font>
-            <Font name="Calibri Bold Italic" size="18.0" />
+            <Font name="System Bold Italic" size="18.0" />
          </font>
       </Text>
       <Text fill="WHITE" layoutX="28.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username">
