@@ -1,3 +1,67 @@
+UPDATE 21 27/10
+-Made Table not clickable when no content was in it. This stopped an exception
+
+UPDATE 20 27/10 - Nathan
+-Added Patch link functionality
+-Added all procedures related to patch linking
+-Added two new variables to reported ID to house patch uploader and patch link
+-Added refresh button for comments so comments could be refreshed and show new entries
+-Added further username and email checks
+-Fixed Reputation on all profiles
+-Fixed Roles on all profiles
+-Fixed password fields on change profiles
+-Fixed Procedures not returning enough values for functions
+-Fixed bug that was related to not changing email seeing it as one that already exists
+
+
+UPDATE 19 27/10 - Nathan
+-Created procedure getDevs that returns all developers
+-Created functions to get devs and place them in combobox
+-removed textfield for assigned to and replaced with combobox so users can no longer assign people that dont exist or arent devs
+
+
+UPDATE 18 27/10 - Nathan
+-Added basis for input validation
+-Added class for input validation
+-Added input validation on Registration 
+
+UPDATE 17 27/10 - Nathan
+-Fixed submit new bug report procedures and functions so correct parameters were set and nothing was missing
+-Fixed random spaces in strings of ENUMS in createnewBug procedure that was causing SQL Truncated errors
+-Added Short Desc box and removed assigned to and bugstatus boxes to submit new report so proper parameters were set
+-Added functionality, classes and variables for editing and saving a searched bug report
+-Added functionality to decrease and increase a users rep through searched report
+-Added more variables to retrieving extended bug details to allow other features to work correctly
+-Eddited retrieved Extended details procedure to return more variables
+
+
+UPDATE 16 27/10 - Michael
+-Added rep increase decrease on admin profiles
+-Added procedure for submit new bug report
+-Added functions and classes for submitting a new bug reports
+
+UPDATE 15 26/10 - Nathan
+-Fixed major DB connection crash related to too many connections
+-Fixed program memory leak and lag.
+
+
+UPDATE 14 26/10 - Nathan
+-Added Create Comment functionality
+-Updated Comments table in Database
+-Created Classes required to add Comments
+-Added functions to Database classes to add comments to the database
+-Added procedures to the the Database for comment addition
+-Fixed various issues with menu access with base users
+-Added access level restrictions in Bug Controller
+-Fixed Access Level field in Admin User controls where it showed as password instead of text
+
+UPDATE 13 -Michael
+
+UPDATE 12 25/10 - Nathan
+-Created Add Comment window allows for text field input so AddComment in Bugs Controller opens a new window
+-Removed Submit comment from BugsController
+TO DO: Add refresh button that updates comment table(or calls populate comments again) so updated comments display.
+
 UPDATE 11 24/10 - Nathan
 -Fixed classes and functions related to Bug Table Data and Extended Data to include some missing variables
 -Added capability to select and search by status, priority and user with error checking on input
@@ -81,39 +145,4 @@ IMPORTANT: You will need to get the new Java library for MySQL https://dev.mysql
 YOU WILL ALSO NEED TO SET UP YOUR OWN TEST DATA!
 In each function you will need to change the DB to your own!
 The tables have also been changed SecLevel was added to the base SuperUser.
-
-
-We will need to complete the the functions in each of these areas before we move to the next.
-
-//////////////////////////////////////////////////////////////////////////
-
-USER ACCESS
-
-Complete
---------------
-Login Screen          //This has been finished
-Passing Username      //Completed passing DB Object
-View Profile          //Complete
-
-Semi- Complete
---------------
-Register Screen       //This has been basically finished DATA VALIDATION NEEDS TO BE COMPLETED
-
-Not Complete
---------------
-Search Bugs
-
-///////////////////////////////////////////////////////////////////////
-
-AUTHENTICATED USER ACCESS
-
-Not Complete
--------------
-Search Bugs that allows to submit comments and Register Interest
-Request/Generate Report
-
-Complete
--------------
-Main Menu for AUTHENTICATED USERS
-Profile page for AUTHENTICATED USERS (Allows edits)
 
