@@ -46,6 +46,43 @@ public class SearchReports {
 
         }
     }
+    
+    public void searchReportsByKeywords (String keywords) throws SQLException {
+        MySQLController conn = new MySQLController();
+        ResultSet rs =  conn.searchDetailsByKeywords(keywords);
+
+        while (rs.next()) {
+            BugReportTableDetails temp = new BugReportTableDetails(rs);
+            reportDetails.add(temp);
+            //System.out.println(temp.getuserName());
+
+        }
+    }
+    
+    public void searchReportsByBName (String keywords) throws SQLException {
+        MySQLController conn = new MySQLController();
+        ResultSet rs =  conn.searchDetailsByBName(keywords);
+        System.out.println(keywords);
+
+        while (rs.next()) {
+            BugReportTableDetails temp = new BugReportTableDetails(rs);
+            reportDetails.add(temp);
+            //System.out.println(temp.getuserName());
+
+        }
+    }
+    
+    public void searchReportsAll () throws SQLException {
+        MySQLController conn = new MySQLController();
+        ResultSet rs =  conn.searchDetailsAll();
+
+        while (rs.next()) {
+            BugReportTableDetails temp = new BugReportTableDetails(rs);
+            reportDetails.add(temp);
+            //System.out.println(temp.getuserName());
+
+        }
+    }
 
     public ObservableList<BugReportTableDetails> getReportDetails(){return reportDetails;}
 }

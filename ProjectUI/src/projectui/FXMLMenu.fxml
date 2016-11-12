@@ -25,7 +25,6 @@
          </font>
       </Text>
       <Button fx:id="viewProfile" layoutX="50.0" layoutY="102.0" mnemonicParsing="false" onAction="#viewProfileAction" prefHeight="25.0" prefWidth="175.0" text="Profile" />
-      <Button fx:id="searchBugs" layoutX="50.0" layoutY="168.0" mnemonicParsing="false" onAction="#searhBugsAction" prefHeight="25.0" prefWidth="175.0" text="Search" />
       <Rectangle arcWidth="5.0" fill="#ebebeb" height="231.0" layoutX="303.0" layoutY="68.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="249.0" />
       <Text layoutX="326.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome USER &#10;&#10;From this menu you can access&#10;BugTracker Primes various features.&#10;&#10;If you believe you are missing access&#10;to some features please contact your&#10;system administrator.&#10;" textAlignment="CENTER">
          <font>
@@ -35,5 +34,6 @@
       <Text fill="#d7d7d7" layoutX="92.0" layoutY="146.0" strokeType="OUTSIDE" strokeWidth="0.0" text="View Your Profile" textAlignment="CENTER" />
       <Text fill="#d7d7d7" layoutX="67.0" layoutY="214.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search all available reports" />
       <Button fx:id="logoutButton" layoutX="111.0" layoutY="236.0" mnemonicParsing="false" onAction="#logoutAction" text="Logout" />
+      <Button fx:id="searchcommentBugs" layoutX="51.0" layoutY="171.0" mnemonicParsing="false" onAction="#searhcommentBugsAction" prefHeight="25.0" prefWidth="175.0" text="Bugs" />
    </children>
 </AnchorPane>

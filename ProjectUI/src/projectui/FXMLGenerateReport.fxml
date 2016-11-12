@@ -34,12 +34,12 @@
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="370.0" prefWidth="692.0" style="-fx-background-color: #ebebeb;">
                      <children>
                         <Rectangle arcWidth="5.0" fill="#282828" height="52.0" stroke="BLACK" strokeType="INSIDE" width="692.0" />
-                        <Text fill="WHITE" layoutX="20.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Weekly Report For">
+                        <Text fill="WHITE" layoutX="20.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Weekly Report From">
                            <font>
                               <Font name="System Bold Italic" size="15.0" />
                            </font>
                         </Text>
-                        <Text fx:id="reportDate" fill="WHITE" layoutX="153.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATE">
+                        <Text fx:id="wreportDate" fill="WHITE" layoutX="166.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATE">
                            <font>
                               <Font name="System Bold Italic" size="15.0" />
                            </font>
@@ -164,12 +164,12 @@
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="370.0" prefWidth="692.0" style="-fx-background-color: #ebebeb;">
                      <children>
                         <Rectangle arcWidth="5.0" fill="#282828" height="52.0" stroke="BLACK" strokeType="INSIDE" width="692.0" />
-                        <Text fill="WHITE" layoutX="20.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Monthly Report For">
+                        <Text fill="WHITE" layoutX="20.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Monthly Report From">
                            <font>
                               <Font name="System Bold Italic" size="15.0" />
                            </font>
                         </Text>
-                        <Text fx:id="reportDate1" fill="WHITE" layoutX="159.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATE">
+                        <Text fx:id="mreportDate" fill="WHITE" layoutX="172.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATE">
                            <font>
                               <Font name="System Bold Italic" size="15.0" />
                            </font>
@@ -294,12 +294,12 @@
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="370.0" prefWidth="692.0" style="-fx-background-color: #ebebeb;">
                      <children>
                         <Rectangle arcWidth="5.0" fill="#282828" height="52.0" stroke="BLACK" strokeType="INSIDE" width="692.0" />
-                        <Text fill="WHITE" layoutX="20.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Half-Yearly Report For">
+                        <Text fill="WHITE" layoutX="20.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Half-Yearly Report From">
                            <font>
                               <Font name="System Bold Italic" size="15.0" />
                            </font>
                         </Text>
-                        <Text fx:id="reportDate11" fill="WHITE" layoutX="182.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATE">
+                        <Text fx:id="hreportDate" fill="WHITE" layoutX="196.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATE">
                            <font>
                               <Font name="System Bold Italic" size="15.0" />
                            </font>
@@ -424,12 +424,12 @@
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="370.0" prefWidth="692.0" style="-fx-background-color: #ebebeb;">
                      <children>
                         <Rectangle arcWidth="5.0" fill="#282828" height="52.0" stroke="BLACK" strokeType="INSIDE" width="692.0" />
-                        <Text fill="WHITE" layoutX="20.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Yearly Report For">
+                        <Text fill="WHITE" layoutX="20.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Yearly Report From">
                            <font>
                               <Font name="System Bold Italic" size="15.0" />
                            </font>
                         </Text>
-                        <Text fx:id="reportDate111" fill="WHITE" layoutX="146.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATE">
+                        <Text fx:id="yreportDate" fill="WHITE" layoutX="159.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATE">
                            <font>
                               <Font name="System Bold Italic" size="15.0" />
                            </font>

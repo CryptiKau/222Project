@@ -21,6 +21,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.ResourceBundle;
 
 /**
@@ -69,39 +70,34 @@ public class FXMLViewEditProfileController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
+        String currentRole = "";
+        switch(currentUser.getAccessLevel()){
+            case 1:
+                currentRole = "AuthUser";
+                break;
+            case 2:
+                currentRole = "Reporter";
+                break;
+            case 3:
+                currentRole = "Developer";
+                break;
+            case 4:
+                currentRole = "Triage";
+                break;
+            case 5:
+                currentRole = "Admin";
+                break;
+        }
+        
+        
         currUsername.setText(currentUser.getUserName());
         firstNameBox.setText(currentUser.getfName());
         lastNameBox.setText(currentUser.getlName());
         emailBox.setText(currentUser.getEmail());
-        currAccessLevel.setText(currentUser.getAdminRole());
-        currRep.setText("Current Rep");
-        currNoReports.setText("0");
+        currAccessLevel.setText(currentRole);
+        currRep.setText(String.valueOf(currentUser.getUserRep()));
         dateJoined.setText(currentUser.getJoinDate());
         errorText.setText("");
-
-        //UPDATE superuser SET Email ='jt@test.net', JoinedDate ='2016-10-14' WHERE UserID = '1';
-//
-//        String fullName = DBCon.getfullName();
-//
-//        String[] parts = fullName.split("\\s+");
-//        String fName = parts[0];
-//        String lName = parts[1];
-//
-//        firstNameBox.setText(fName);
-//        lastNameBox.setText(lName);
-//
-//        emailBox.setText(DBCon.getEmail());
-//
-//        String accessLevel = Integer.toString(DBCon.getsecLevel());
-//        currAccessLevel.setText(accessLevel);
-//        String noReports = Integer.toString(DBCon.getnumReports());
-//        currNoReports.setText(noReports);
-//        String repLevel = Integer.toString(DBCon.getrepLevel());
-//        currRep.setText(repLevel);
-//        dateJoined.setText(DBCon.getdateJoined());
-//
-//        errorText.setText(" ");
     }    
 
     @FXML
@@ -122,14 +118,30 @@ public class FXMLViewEditProfileController implements Initializable {
 
     @FXML
     private void saveChanges(ActionEvent event) throws SQLException {
-
+        
         //TO DO: VERIFY USER INPUT
-
-
+         MySQLController conn = new MySQLController();
+        List<String> Emails = conn.getEmailList();
+        int eMsent = 0;
+        
+        for (int i = 0; i < Emails.size(); i++){
+           
+           if(Emails.get(i).equals(emailBox.getText())){
+               eMsent = 1;
+           }
+           
+        }
+        if(currentUser.getEmail().equals(emailBox.getText())){
+            eMsent = 0;
+        }
+        
         if(passwordBox.getText().isEmpty()){
             System.out.println("new password empty");
             errorText.setText("Please Enter your password to make changes");
-        }else if(newPassword.getText().isEmpty() && !passwordBox.getText().isEmpty()){
+        }else if(eMsent == 1){      
+            errorText.setText("Email Already Taken");
+        }
+        else if(newPassword.getText().isEmpty() && !passwordBox.getText().isEmpty() && passwordBox.getText().equals(currentUser.getCurrPass())){
             errorText.setText("");
             System.out.println("Update no new password");
             //update everything but password
@@ -140,17 +152,23 @@ public class FXMLViewEditProfileController implements Initializable {
             }
             errorText.setText("Changes Saved");
 
-        }else if(!newPassword.getText().isEmpty() && !passwordBox.getText().isEmpty()){
+        }else if(!newPassword.getText().isEmpty() && !passwordBox.getText().isEmpty() && passwordBox.getText().equals(currentUser.getCurrPass())){
             //update everything including password
             errorText.setText("");
             System.out.println("Update new password");
             try{
                 currentUser.updateAdmin(firstNameBox.getText(), lastNameBox.getText(), emailBox.getText(), newPassword.getText());
+                currentUser.setNewPass();
             } catch (Exception e){
                 e.printStackTrace();
             }
             errorText.setText("Changes Saved");
         }
+        else if(!passwordBox.getText().equals(currentUser.getCurrPass())){
+            
+            errorText.setText("Incorrect Password Changes not saved");
+        }
+        eMsent = 0;
 
 //        if(passwordBox.getText().equals(DBCon.getPassword())){
 //

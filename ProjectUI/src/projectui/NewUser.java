@@ -37,7 +37,7 @@ public class NewUser {
         passWord = pWord;
 
         DBConn.registerNewUser(this);
-
+      
 
     }
 

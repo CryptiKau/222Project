@@ -31,9 +31,9 @@ public class BugReportTableDetails {
         this.priority = new SimpleStringProperty(rs.getString(5));
         //COULD NOT GET THIS TO WORK
         this.bugName = new SimpleStringProperty(rs.getString(6));
-        System.out.println(rs.getString(7));
+//        System.out.println(rs.getString(7));
         this.reporter = new SimpleStringProperty(rs.getString(7));
-        System.out.println(rs.getString(7));
+//        System.out.println(rs.getString(7));
         //THIS WORKS
 
     }

@@ -22,6 +22,7 @@ public class ProjectUI extends Application {
 
         System.out.println("START");
         //program starts here and should check if database exists, if not run setup scripts
+        stage.setTitle("BugTracker Prime");
 
         Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
         

@@ -6,7 +6,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="324.0" prefWidth="533.0" style="-fx-background-color: #282828;" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="AnchorPane" prefHeight="290.0" prefWidth="533.0" style="-fx-background-color: #282828;" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Rectangle arcWidth="5.0" fill="#ebebeb" height="76.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="533.0" />
       <Text fill="#5b5b5b" layoutX="31.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BUGTRACKER">
@@ -49,29 +49,23 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="52.0" layoutY="215.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No. Reports:">
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font>
-      </Text>
       <Text fx:id="currUsername" fill="WHITE" layoutX="152.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" text="JoeTest" />
       <Text fx:id="currEmail" fill="WHITE" layoutX="152.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="jTest@btprime.com" />
       <Text fx:id="currName" fill="WHITE" layoutX="152.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Joe Testing" />
       <Text fx:id="currAccessLevel" fill="WHITE" layoutX="152.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" text="System Admin" />
       <Text fx:id="currRep" fill="WHITE" layoutX="152.0" layoutY="195.0" strokeType="OUTSIDE" strokeWidth="0.0" text="50" />
-      <Text fx:id="currNoReports" fill="WHITE" layoutX="152.0" layoutY="215.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5" />
-      <Rectangle arcWidth="5.0" fill="#ebebeb" height="249.0" layoutX="327.0" layoutY="76.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="206.0" />
-      <Button fx:id="backToMenu" layoutX="84.0" layoutY="286.0" mnemonicParsing="false" onAction="#backtoMenu" prefHeight="25.0" prefWidth="175.0" text="Back" />
+      <Rectangle arcWidth="5.0" fill="#ebebeb" height="213.0" layoutX="327.0" layoutY="76.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="206.0" />
+      <Button fx:id="backToMenu" layoutX="84.0" layoutY="246.0" mnemonicParsing="false" onAction="#backtoMenu" prefHeight="25.0" prefWidth="175.0" text="Back" />
       <Text layoutX="333.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Here you can view your profile&#10;details and statistics. &#10;&#10;If anything needs changing or&#10;you see something that is incorrect&#10;please contact your system&#10;administrator.&#10;" textAlignment="CENTER" wrappingWidth="194.4091796875">
          <font>
             <Font size="13.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="52.0" layoutY="235.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Join Date:">
+      <Text fill="WHITE" layoutX="52.0" layoutY="215.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Join Date:">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Text>
-      <Text fx:id="dateJoined" fill="WHITE" layoutX="152.0" layoutY="235.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5" />
+      <Text fx:id="dateJoined" fill="WHITE" layoutX="152.0" layoutY="215.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5" />
    </children>
 </AnchorPane>

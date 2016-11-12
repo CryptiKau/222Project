@@ -42,13 +42,13 @@
          </font>
       </Text>
       <Rectangle arcWidth="5.0" fill="#ebebeb" height="337.0" layoutX="388.0" layoutY="85.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="212.0" />
-      <Button fx:id="backToMenu" layoutX="236.0" layoutY="376.0" mnemonicParsing="false" onAction="#backtoMenu" prefHeight="25.0" prefWidth="92.0" text="Back" />
+      <Button fx:id="backToMenu" layoutX="236.0" layoutY="356.0" mnemonicParsing="false" onAction="#backtoMenu" prefHeight="25.0" prefWidth="92.0" text="Back" />
       <Text layoutX="397.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Here you can view your profile&#10;details and statistics. &#10;&#10;If anything needs changing or&#10;you see something that is incorrect&#10;please contact your system&#10;administrator.&#10;" textAlignment="CENTER" wrappingWidth="194.4091796875">
          <font>
             <Font size="13.0" />
          </font>
       </Text>
-      <Button fx:id="saveChangesButton" layoutX="86.0" layoutY="376.0" mnemonicParsing="false" onAction="#saveChanges" prefHeight="25.0" prefWidth="92.0" text="Save Changes" />
+      <Button fx:id="saveChangesButton" layoutX="86.0" layoutY="356.0" mnemonicParsing="false" onAction="#saveChanges" prefHeight="25.0" prefWidth="92.0" text="Save Changes" />
       <Text fill="WHITE" layoutX="41.0" layoutY="281.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Access Level:">
          <font>
             <Font name="System Bold" size="14.0" />
@@ -59,20 +59,14 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="41.0" layoutY="321.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No. Reports:">
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font>
-      </Text>
       <Text fx:id="currAccessLevel" fill="WHITE" layoutX="151.0" layoutY="281.0" strokeType="OUTSIDE" strokeWidth="0.0" text="System Admin" />
       <Text fx:id="currRep" fill="WHITE" layoutX="151.0" layoutY="301.0" strokeType="OUTSIDE" strokeWidth="0.0" text="50" />
-      <Text fx:id="currNoReports" fill="WHITE" layoutX="151.0" layoutY="321.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5" />
-      <Text fill="WHITE" layoutX="41.0" layoutY="341.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Join Date:">
+      <Text fill="WHITE" layoutX="41.0" layoutY="321.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Join Date:">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Text>
-      <Text fx:id="dateJoined" fill="WHITE" layoutX="151.0" layoutY="341.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5" />
+      <Text fx:id="dateJoined" fill="WHITE" layoutX="151.0" layoutY="321.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5" />
       <Text fill="WHITE" layoutX="42.0" layoutY="216.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password:">
          <font>
             <Font name="System Bold" size="14.0" />
@@ -89,7 +83,7 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Text>
-      <Text fx:id="errorText" fill="RED" layoutX="192.0" layoutY="366.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Error">
+      <Text fx:id="errorText" fill="RED" layoutX="112.0" layoutY="346.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Error" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>

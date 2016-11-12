@@ -27,10 +27,12 @@ public class FXMLMenuController implements Initializable {
         currentUser = curr;
     }
     
+   
+    
     @FXML
     private Button viewProfile;
     @FXML
-    private Button searchBugs;
+    private Button searchcommentBugs;
     @FXML
     private Button logoutButton;
 
@@ -39,7 +41,7 @@ public class FXMLMenuController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-//        System.out.println(DBCon.getUsername());
+            System.out.println(currentUser.getAccessLevel());
 //        System.out.println(DBCon.getsecLevel());
     }    
 
@@ -63,16 +65,16 @@ public class FXMLMenuController implements Initializable {
     }
 
     @FXML
-    private void searhBugsAction(ActionEvent event) throws IOException {
+    private void searhcommentBugsAction(ActionEvent event) throws IOException {
 
         Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLBugs.fxml"));
         FXMLBugsController controller = new FXMLBugsController(currentUser);
         loader.setController(controller);
-        Parent searchBugPage_parent = loader.load();
-        Scene searchBugPage_scene = new Scene(searchBugPage_parent);
+        Parent parent = loader.load();
+        Scene scene = new Scene(parent);
         app_stage.hide();
-        app_stage.setScene(searchBugPage_scene);
+        app_stage.setScene(scene);
         app_stage.show();
 
 

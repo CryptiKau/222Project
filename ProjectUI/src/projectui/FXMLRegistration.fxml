@@ -11,7 +11,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #282828;" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projectui.FXMLRegistrationController">
    <children>
-      <Rectangle arcWidth="5.0" fill="#ebebeb" height="74.0" layoutY="-6.0" stroke="#6b6b6b" strokeType="OUTSIDE" strokeWidth="0.0" width="602.0" />
+      <Rectangle arcWidth="5.0" fill="#ebebeb" height="74.0" layoutY="-6.0" stroke="#6b6b6b" strokeType="OUTSIDE" strokeWidth="0.0" width="697.0" />
       <Text fill="#5b5b5b" layoutX="21.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BUGTRACKER">
          <font>
             <Font name="System Bold" size="27.0" />
@@ -68,8 +68,18 @@
       </Label>
       <Button fx:id="newRegister" layoutX="99.0" layoutY="315.0" mnemonicParsing="false" onAction="#registerAcc" prefHeight="25.0" prefWidth="205.0" style="-fx-background-color: D7D7D7;" text="Register" />
       <Button fx:id="backtoLog" layoutX="99.0" layoutY="352.0" mnemonicParsing="false" onAction="#backAction" prefHeight="25.0" prefWidth="205.0" style="-fx-background-color: D7D7D7;" text="Back" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ebebeb" height="340.0" layoutX="397.0" layoutY="66.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="205.0" />
-      <Text layoutX="401.0" layoutY="107.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please fill out the required details&#10;&#10;Once your registration has been&#10;completed you will be able to access&#10;BugTracker Prime.&#10;&#10;BugTracker Prime is a premium&#10;issue and bug tracking program&#10;once an account is created you &#10;will have access to tools granted&#10;by your system admin.&#10;&#10;&#10;If you have already registered please &#10;press the back button and attempt &#10;to login with your details." textAlignment="CENTER" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ebebeb" height="349.0" layoutX="397.0" layoutY="66.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
+      <Text layoutX="401.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please fill out the required details&#10;&#10;Once your registration has been&#10;completed you will be able to access&#10;BugTracker Prime.&#10;&#10;BugTracker Prime is a premium&#10;issue and bug tracking program&#10;once an account is created you &#10;will have access to tools granted&#10;by your system admin.&#10;&#10;If you have already registered please &#10;press the back button and attempt &#10;to login with your details.&#10;&#10;Fields must not contain any spaces&#10;Username Must Be 20 Characters or less&#10;Email Must Be 40 Characters or Less&#10;First and Last Name must be 30 Characters or less each" textAlignment="CENTER" />
       <PasswordField fx:id="newPassword" layoutX="99.0" layoutY="136.0" prefHeight="25.0" prefWidth="205.0" />
+      <Text fx:id="errorText" fill="RED" layoutX="134.0" layoutY="304.0" strokeType="OUTSIDE" strokeWidth="0.0">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Text>
+      <Text fx:id="createdText" fill="WHITE" layoutX="145.0" layoutY="303.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ACCOUNT CREATED">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

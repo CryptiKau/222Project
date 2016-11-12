@@ -5,9 +5,6 @@
  */
 package projectui;
 
-import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -20,6 +17,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Tab;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+
+import java.io.IOException;
+import java.net.URL;
+import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.ResourceBundle;
+import static javax.management.Query.value;
 
 /**
  * FXML Controller class
@@ -37,7 +42,7 @@ public class FXMLGenerateReportController implements Initializable {
     @FXML
     private Tab weeklyTab;
     @FXML
-    private Text reportDate;
+    private Text wreportDate;
     @FXML
     private Text newReportCountText;
     @FXML
@@ -70,7 +75,7 @@ public class FXMLGenerateReportController implements Initializable {
     @FXML
     private Tab monthlyTab;
     @FXML
-    private Text reportDate1;
+    private Text mreportDate;
     @FXML
     private Text mnewReportCountText;
     @FXML
@@ -103,7 +108,7 @@ public class FXMLGenerateReportController implements Initializable {
     @FXML
     private Tab halfyearlyTab;
     @FXML
-    private Text reportDate11;
+    private Text hreportDate;
     @FXML
     private Text hnewReportCountText;
     @FXML
@@ -136,7 +141,7 @@ public class FXMLGenerateReportController implements Initializable {
     @FXML
     private Tab yearlyTab;
     @FXML
-    private Text reportDate111;
+    private Text yreportDate;
     @FXML
     private Text ynewReportCountText;
     @FXML
@@ -175,24 +180,99 @@ public class FXMLGenerateReportController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         //call the generate weekly function
+        try {
+            generateWeekly();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        String date = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
         
+        yreportDate.setText(date);
+        mreportDate.setText(date);
+        wreportDate.setText(date);
+        hreportDate.setText(date);
+
     }    
 
     @FXML
-    private void generateWeekly(Event event) {
+    private void generateWeekly() throws SQLException {
         //get the counts of each text and set text
+        ReportStats week = new ReportStats(7);
+
+        newReportCountText.setText(week.getNewBugReports());
+        newReportAssText.setText(week.getReportsAssigned());
+        newReportunAssText.setText(week.getReportsUnassigned());
+        reportedBugsText.setText(week.getReportedBugs());
+        progresBugsText.setText(week.getProgressingBugs());
+        solvedBugsTest.setText(week.getSolvedBugs());
+        lowPrioText.setText(week.getLowPriority());
+        mediumPrioText.setText(week.getMedPriority());
+        highPrioText.setText(week.getHighPriority());
+        emergPrioText.setText(week.getEmergencyPriority());
+        cosSevText.setText(week.getCosmeticSev());
+        minorSevText.setText(week.getMinorSev());
+        majorSevText.setText(week.getMajorSev());
+        critSevText.setText(week.getCriticalSev());
     }
 
     @FXML
-    private void generateMonthly(Event event) {
+    private void generateMonthly(Event event) throws SQLException {
+        ReportStats month = new ReportStats(30);
+
+        mnewReportCountText.setText(month.getNewBugReports());
+        mnewReportAssText.setText(month.getReportsAssigned());
+        mnewReportunAssText.setText(month.getReportsUnassigned());
+        mreportedBugsText.setText(month.getReportedBugs());
+        mprogresBugsText.setText(month.getProgressingBugs());
+        msolvedBugsTest.setText(month.getSolvedBugs());
+        mlowPrioText.setText(month.getLowPriority());
+        mmediumPrioText.setText(month.getMedPriority());
+        mhighPrioText.setText(month.getHighPriority());
+        memergPrioText.setText(month.getEmergencyPriority());
+        mcosSevText.setText(month.getCosmeticSev());
+        mminorSevText.setText(month.getMinorSev());
+        mmajorSevText.setText(month.getMajorSev());
+        mcritSevText.setText(month.getCriticalSev());
     }
 
     @FXML
-    private void generateHalfYearly(Event event) {
+    private void generateHalfYearly(Event event) throws SQLException {
+        ReportStats halfYear = new ReportStats(183);
+
+        hnewReportCountText.setText(halfYear.getNewBugReports());
+        hnewReportAssText.setText(halfYear.getReportsAssigned());
+        hnewReportunAssText.setText(halfYear.getReportsUnassigned());
+        hreportedBugsText.setText(halfYear.getReportedBugs());
+        hprogresBugsText.setText(halfYear.getProgressingBugs());
+        hsolvedBugsTest.setText(halfYear.getSolvedBugs());
+        hlowPrioText.setText(halfYear.getLowPriority());
+        hmediumPrioText.setText(halfYear.getMedPriority());
+        hhighPrioText.setText(halfYear.getHighPriority());
+        hemergPrioText.setText(halfYear.getEmergencyPriority());
+        hcosSevText.setText(halfYear.getCosmeticSev());
+        hminorSevText.setText(halfYear.getMinorSev());
+        hmajorSevText.setText(halfYear.getMajorSev());
+        hcritSevText.setText(halfYear.getCriticalSev());
     }
 
     @FXML
-    private void generateYearly(Event event) {
+    private void generateYearly(Event event) throws SQLException {
+        ReportStats year = new ReportStats(366);
+
+        ynewReportCountText.setText(year.getNewBugReports());
+        ynewReportAssText.setText(year.getReportsAssigned());
+        ynewReportunAssText.setText(year.getReportsUnassigned());
+        yreportedBugsText.setText(year.getReportedBugs());
+        yprogresBugsText.setText(year.getProgressingBugs());
+        ysolvedBugsTest.setText(year.getSolvedBugs());
+        ylowPrioText.setText(year.getLowPriority());
+        ymediumPrioText.setText(year.getMedPriority());
+        yhighPrioText.setText(year.getHighPriority());
+        yemergPrioText.setText(year.getEmergencyPriority());
+        ycosSevText.setText(year.getCosmeticSev());
+        yminorSevText.setText(year.getMinorSev());
+        ymajorSevText.setText(year.getMajorSev());
+        ycritSevText.setText(year.getCriticalSev());
     }
 
     @FXML
